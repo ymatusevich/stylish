@@ -1,0 +1,33 @@
+.image
+  .form-group
+    %label Name
+    = style.name
+  .form-group
+    %label Name
+    = style.description
+  .form-group
+    %label Data
+    = style.data
+  .form-group
+    %label Category
+    = style.category
+  .form-group
+    - if style.active?
+      active
+    - else
+      = form_for style do |f|
+        = f.hidden_field :act, value: 'active'
+        = f.hidden_field :active, value: '1'
+        = f.submit 'Activate'
+
+  .form-group
+    - if style.default?
+      default
+    - else
+      = form_for style do |f|
+        = f.hidden_field :act, value: 'default'
+        = f.hidden_field :default, value: '1'
+        = f.submit 'Make default'
+
+  .form-group
+    = link_to 'Delete', style, data: { confirm: 'Are you sure?' }, method: :delete

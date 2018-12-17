@@ -1,0 +1,1 @@
+$stylish = jQuery.noConflict();

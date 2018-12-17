@@ -1,0 +1,13 @@
+.col-md-6
+  = form_for @image, multipart: true do |f|
+    - if f.object.class.categories
+      .form-group
+        = f.select :category, f.object.class.categories, prompt: 'Without category', class: 'form-control'
+    .form-group
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.text_area :description, class: 'form-control'
+    .form-group
+      = f.file_field :data, class: 'form-control'
+    .form-group
+      = f.submit 'Save', class: 'btn btn-default'

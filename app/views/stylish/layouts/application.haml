@@ -1,0 +1,17 @@
+%html
+  %head
+  %title Stylish
+  = stylesheet_link_tag 'stylish/application', media: :all
+  = javascript_include_tag 'stylish/application'
+  = csrf_meta_tags
+  %body
+    .stylish.container-fluid#main-container
+      %ul.nav.nav-tabs{ role: 'tablist' }
+        %li
+          = link_to 'Images', images_path
+        %li
+          = link_to 'Styles', styles_path
+      .tab-content
+        #flash
+          = render 'stylish/shared/messages'
+        = yield

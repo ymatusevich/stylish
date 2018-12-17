@@ -1,0 +1,32 @@
+.image
+  .form-group
+    %label Name
+    = image.name
+  .form-group
+    %label Name
+    = image.description
+  .form-group
+    = image_tag(image.data)
+  .form-group
+    %label Category
+    = image.category
+  .form-group
+    - if image.active?
+      active
+    - else
+      = form_for image do |f|
+        = f.hidden_field :act, value: 'active'
+        = f.hidden_field :active, value: '1'
+        = f.submit 'Activate'
+
+  .form-group
+    - if image.default?
+      default
+    - else
+      = form_for image do |f|
+        = f.hidden_field :act, value: 'default'
+        = f.hidden_field :default, value: '1'
+        = f.submit 'Make default'
+
+  .form-group
+    = link_to 'Delete', image, data: { confirm: 'Are you sure?' }, method: :delete
